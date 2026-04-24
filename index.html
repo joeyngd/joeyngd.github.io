@@ -1,586 +1,1285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duc Duy Nguyen - Personal Portfolio</title>
-    <link rel="icon" href="images/pagelogo.png" type="image/x-icon">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between">
-                <div class="flex space-x-7">
-                    <div>
-                        <a href="#" class="flex items-center py-4">
-                            <span class="font-bold text-blue-600 text-2xl hover:text-blue-700 transition duration-300">DUC DUY</span>
-                            <span class="ml-2 font-bold text-black-600 text-2xl hover:text-black-700 transition duration-300">NGUYEN</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-1">
-                    <a href="#about" class="py-4 px-2 text-gray-500 hover:text-gray-900">About</a>
-                    <a href="#news" class="py-4 px-2 text-gray-500 hover:text-gray-900">News</a>
-                    <a href="#education" class="py-4 px-2 text-gray-500 hover:text-gray-900">Education</a>
-                    <a href="#experience" class="py-4 px-2 text-gray-500 hover:text-gray-900">Experience</a>
-                    <a href="#projects" class="py-4 px-2 text-gray-500 hover:text-gray-900">Projects</a>
-                    <a href="#skills" class="py-4 px-2 text-gray-500 hover:text-gray-900">Skills</a>
-                    <a href="#contact" class="py-4 px-2 text-gray-500 hover:text-gray-900">Contact</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duc Duy Nguyen - PhD Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #F5F0E8;
+      --warm-white: #FDFAF5;
+      --sand: #E8DFD0;
+      --taupe: #C4B49A;
+      --brown: #8B6F47;
+      --deep-brown: #4A3728;
+      --charcoal: #2C2419;
+      --rust: #C4622D;
+      --rust-light: #E07845;
+      --rust-pale: #F5E6DE;
+      --text-primary: #2C2419;
+      --text-secondary: #6B5744;
+      --text-light: #9C8672;
+      --teal: #2A6E6E;
+      --teal-light: #3A8F8F;
+      --teal-pale: #E0EFEF;
+    }
 
-    <!-- Hero Section -->
-    <div class="bg-white" style="background-image: url('images/background.jpg'); background-size: cover; background-position: center;">
-        <div class="max-w-6xl mx-auto px-4 py-20">
-            <div class="text-center">
-                <h1 class="text-4xl font-bold text-white mb-4">Hello, I'm Duc Duy Nguyen</h1>
-                <p class="text-xl text-white font-medium mb-8">PhD Researcher | Mechanical Engineer | Engine Enthusiast</p>
-                <img src="https://github.com/duyngd.png" alt="Profile Picture" class="rounded-full mx-auto mb-8 w-40 h-40 object-cover shadow-lg">
-                <a href="#contact" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-300">Get in Touch</a>
-            </div>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* navigation */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(253,250,245,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--sand);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 600;
+      color: var(--deep-brown);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .nav-logo span { color: var(--rust); }
+
+    .nav-links { display: flex; gap: 0.25rem; }
+    .nav-links button {
+      background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-secondary);
+      padding: 0.5rem 0.85rem; border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-links button:hover { color: var(--rust); background: var(--rust-pale); }
+    .nav-links button.active { color: var(--rust); background: var(--rust-pale); }
+
+    /* pages display */
+    .page { display: none; padding-top: 64px; min-height: 100vh; animation: fadeIn 0.4s ease; }
+    .page.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* home page */
+    .home-hero {
+      min-height: calc(100vh - 64px);
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 4rem 5rem;
+      gap: 4rem;
+    }
+    .home-text { max-width: 520px; }
+    .home-eyebrow {
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--rust);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .home-eyebrow::before {
+      content: ''; display: block; width: 2rem; height: 1px; background: var(--rust);
+    }
+    .home-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300; line-height: 1.05;
+      color: var(--deep-brown);
+      margin-bottom: 1rem;
+    }
+    .home-name em { font-style: italic; color: var(--rust); }
+    .home-tagline {
+      font-size: 1.05rem; font-weight: 300; line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+    }
+    .home-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--rust); color: #fff;
+      padding: 0.75rem 2rem; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+      border: none; cursor: pointer; transition: all 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--rust-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(196,98,45,0.3); }
+    .btn-ghost {
+      background: none; color: var(--text-secondary);
+      padding: 0.75rem 1.5rem; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+      border: 1.5px solid var(--sand); cursor: pointer; transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--taupe); color: var(--deep-brown); background: var(--cream); }
+
+    .home-visual {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .profile-ring {
+      width: 350px; height: 350px; border-radius: 50%;
+      border: 2px solid var(--sand);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .profile-ring::before {
+      content: ''; position: absolute;
+      width: 400px; height: 400px; border-radius: 50%;
+      border: 1px solid var(--rust-pale);
+    }
+    .profile-img {
+      width: 320px; height: 320px; border-radius: 50%;
+      object-fit: cover;
+    }
+    .profile-badge {
+      position: absolute; bottom: -100px; right: 220px;
+      background: var(--deep-brown); color: var(--cream);
+      padding: 0.6rem 1rem; border-radius: 10px;
+      font-size: 0.75rem; font-weight: 500; line-height: 1.4;
+      white-space: nowrap; box-shadow: 0 4px 16px rgba(44,36,25,0.2);
+    }
+    .profile-badge strong { display: block; font-size: 0.9rem; color: var(--rust-light); }
+
+    .home-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 4rem; padding: 0 5rem 4rem;
+    }
+    .stat-card {
+      background: var(--cream); border: 1px solid var(--sand);
+      border-radius: 12px; padding: 1.5rem;
+      transition: all 0.25s;
+    }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(139,111,71,0.12); }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem; font-weight: 600; color: var(--rust);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.4rem; font-weight: 400; }
+
+    .social-links { display: flex; gap: 0.75rem; margin-top: 2rem; }
+    .social-link {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: var(--cream); border: 1px solid var(--sand);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-secondary); transition: all 0.2s;
+      text-decoration: none;
+    }
+    .social-link:hover { background: var(--rust); color: #fff; border-color: var(--rust); transform: translateY(-2px); }
+    .social-link svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* about */
+    .page-header {
+      background: var(--cream); border-bottom: 1px solid var(--sand);
+      padding: 3rem 5rem 2.5rem;
+    }
+    .page-header-eyebrow {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--rust); margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .page-header-eyebrow::before { content:''; width:2rem; height:1px; background:var(--rust); display:block; }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 300; color: var(--deep-brown);
+      line-height: 1.1;
+    }
+    .page-header h1 em { font-style: italic; color: var(--rust); }
+
+    .content-grid {
+      display: grid; grid-template-columns: 2fr 1fr;
+      gap: 3rem; padding: 3rem 5rem;
+      max-width: 1200px;
+    }
+    .prose p {
+      font-size: 1rem; line-height: 1.85; color: var(--text-secondary);
+      margin-bottom: 1.25rem; font-weight: 300;
+    }
+    .prose p:first-child { font-size: 1.1rem; color: var(--text-primary); }
+
+    .sidebar-card {
+      background: var(--cream); border: 1px solid var(--sand);
+      border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .sidebar-card h3 {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--rust); margin-bottom: 1rem;
+    }
+    .info-row { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; align-items: flex-start; }
+    .info-row-icon { color: var(--rust); flex-shrink: 0; margin-top: 2px; }
+    .info-row-text { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.5; }
+    .info-row-text a { color: var(--rust); text-decoration: none; }
+    .info-row-text a:hover { text-decoration: underline; }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      background: var(--rust-pale); color: var(--rust);
+      border: 1px solid rgba(196,98,45,0.2);
+      padding: 0.3rem 0.75rem; border-radius: 20px;
+      font-size: 0.78rem; font-weight: 500;
+    }
+
+    /* timeline */
+    .timeline-section { padding: 3rem 5rem; }
+    .timeline-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 400; color: var(--deep-brown);
+      margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;
+    }
+    .timeline-section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--sand);
+    }
+
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--rust), var(--sand));
+      border-radius: 2px;
+    }
+    .timeline-item { position: relative; padding: 0 0 2.5rem 2.5rem; }
+    .timeline-dot {
+      position: absolute; left: -2.35rem; top: 0.3rem;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--rust); border: 3px solid var(--warm-white);
+      box-shadow: 0 0 0 2px var(--rust);
+    }
+    .timeline-date {
+      font-size: 1.75rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--rust); margin-bottom: 0.4rem;
+    }
+    .timeline-card {
+      border-radius: 10px; padding: 1.1rem 1.25rem;
+      border: 1px solid var(--sand); width: 90%;
+      transition: all 0.22s; 
+    }
+    .timeline-card.academic{margin-right:1rem;
+      background: var(--rust-pale); border-left: 3px solid var(--rust);
+    }
+    .timeline-card.industry{margin-left:1rem;
+      background: var(--teal-pale); border-right: 3px solid var(--teal);
+    }
+    .timeline-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+    .timeline-card h3 { font-size: 0.95rem; font-weight: 500; color: var(--deep-brown); margin-bottom: 0.2rem; }
+    .timeline-card .institution {
+      font-size: 0.8rem; font-weight: 500; margin-bottom: 0.4rem;
+    }
+    .timeline-card.academic .institution { color: var(--rust); }
+    .timeline-card.industry .institution { color: var(--teal); }
+
+    .timeline-card p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6; }
+    .timeline-card .thesis {
+      margin-top: 0.6rem; padding: 0.6rem 0.75rem; border-radius: 6px;
+      background: rgba(255,255,255,0.6);
+    }
+    .timeline-card.academic .thesis { border-left: 2px solid var(--rust); }
+    .timeline-card.industry .thesis { border-left: 2px solid var(--teal); }
+    .timeline-card .thesis-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 0.2rem; }
+    .timeline-card .thesis p { font-style: italic; font-size: 0.8rem; }
+    /* empty slot */
+    .ct-empty { width: 100%; }
+
+    .central-timeline-wrap {       
+      padding: 3rem 3rem 4rem;
+      position: relative; }
+
+    /* legend */
+    .timeline-legend {
+      display: flex; justify-content: center; gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .legend-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .legend-dot.academic { background: var(--rust); }
+    .legend-dot.industry { background: var(--teal); }
+
+    /* column headers */
+    .timeline-col-headers {
+      display: grid; grid-template-columns: 1fr 60px 1fr;
+      margin-bottom: 1rem;
+    }
+    .timeline-col-header {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.4rem 1rem;
+      border-radius: 20px; display: inline-block;
+    }
+    .timeline-col-header.academic {
+      color: var(--rust); background: var(--rust-pale);
+      border: 1px solid rgba(196,98,45,0.2); justify-self: end; margin-right: 2.3rem;
+    }
+    .timeline-col-header.industry {
+      color: var(--teal); background: var(--teal-pale);
+      border: 1px solid rgba(42,110,110,0.2); justify-self: end; margin-left: 2.3rem;
+    }
+
+    /* the rows */
+    .ct-row {
+      display: grid; grid-template-columns: 1fr 60px 1fr;
+      align-items: start; margin-bottom: 1.5rem; position: relative;
+    }
+    /* vertical centre line */
+    .central-timeline-rows {
+      position: relative;
+    }
+    .central-timeline-rows::before {
+      content: '';
+      position: absolute; top: 0; bottom: 0;
+      left: calc(50% - 1px); width: 2px;
+      background: linear-gradient(to bottom, var(--rust), var(--teal));
+      border-radius: 2px;
+    }
+
+    /* centre column */
+    .ct-center {
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: center; 
+      position: relative; z-index: 1
+    }
+    .ct-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 3px solid var(--warm-white);
+      flex-shrink: 0; margin-top: 1rem;
+      position: relative; left: 50%; transform: translateX(-50%);
+    }
+    .ct-dot.academic { background: var(--rust); box-shadow: 0 0 0 2px var(--rust); }
+    .ct-dot.industry { background: var(--teal); box-shadow: 0 0 0 2px var(--teal); }
+    .ct-date {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.05em; position: absolute;
+      line-height: 1.3; color: var(--text-light); white-space: nowrap; align-self: center;
+    }
+    .ct-date.academic { margin-right: 5rem; margin-top: 1rem; text-align: right; order: -1;}
+    .ct-date.industry { margin-left: 5rem; margin-top: 1rem; text-align: left; order: 1; }
+
+    .ct-left { padding-right: 1.25rem; display: flex; justify-content: flex-end; }
+    .ct-right { padding-left: 1.25rem; }
+
+    /* experiences */
+    .exp-carousel {
+      position: relative; padding: 0 5rem 3rem;
+    }
+    .exp-carousel-track-wrap {
+      overflow: hidden;
+    }  
+    .exp-grid {
+      display: flex; gap: 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+      will-change: transform;
+    }
+    .exp-grid .exp-card {
+      flex: 0 0 calc(33.333% - 1rem);
+      min-width: 300px;
+    }
+
+    .carousel-btn {
+      position: absolute; top: 25%; transform: translateY(-60%);
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--warm-white); border: 1.5px solid var(--sand);
+      color: var(--text-secondary); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .carousel-btn:hover { background: var(--rust); color: #fff; border-color: var(--rust); }
+    .carousel-btn.prev { left: 1rem; }
+    .carousel-btn.next { right: 1rem; }
+    .carousel-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    .exp-card {
+      background: var(--cream); border: 1px solid var(--sand);
+      border-radius: 14px; padding: 2rem; position: relative;
+      transition: all 0.25s; overflow: hidden;
+    }
+
+    .exp-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      background: var(--cream);
+    }
+
+    .exp-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--rust), var(--rust-light));
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .exp-card:hover { box-shadow: 0 10px 32px rgba(139,111,71,0.12); transform: translateY(-3px); }
+    .exp-card:hover::before { opacity: 1; }
+    .exp-type-badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--rust-pale); color: var(--rust);
+      border-radius: 20px; padding: 0.25rem 0.75rem; margin-bottom: 1rem;
+    }
+    .exp-card h3 { font-size: 1.1rem; font-weight: 500; color: var(--deep-brown); margin-bottom: 0.3rem; }
+    .exp-card .org { font-size: 0.9rem; color: var(--rust); font-weight: 500; margin-bottom: 0.2rem; }
+    .exp-card .period { font-size: 0.8rem; color: var(--text-light); margin-bottom: 1rem; }
+    .exp-card p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.7; }
+
+    /* news */
+    .news-list { padding: 0 5rem; }
+    .news-item {
+      display: grid; grid-template-columns: 140px 1fr;
+      border-bottom: 1px solid var(--sand); padding: 1.5rem 0;
+      gap: 2rem; align-items: start; transition: all 0.2s;
+    }
+    .news-item:hover .news-body { transform: translateX(4px); }
+    .news-date { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; color: var(--rust); padding-top: 0.15rem; }
+    .news-body { transition: transform 0.2s; }
+    .news-body p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+    .news-body a { color: var(--rust); text-decoration: none; font-weight: 500; }
+    .news-body a:hover { text-decoration: underline; }
+    .news-images {
+      display: flex;
+      gap: 1rem;
+      margin-top: -1rem;
+    }
+
+    .news-images img {
+      height: 240px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid var(--sand);
+      background: var(--warm-white);
+      transition: all 0.2s;
+    }
+
+    .news-item:hover .news-images img {
+      border-color: var(--rust);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(196,98,45,0.15);
+    }
+
+    .news-images figure {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .news-images figcaption {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      font-style: italic;
+      text-align: left;
+    }
+    /* contact */
+    .contact-layout {
+      padding: 3rem 5rem;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4rem;
+      max-width: 1400px;
+    }
+    /* contact form */
+    .contact-form h3 {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--rust); margin-bottom: 1.25rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group label { font-size: 0.78rem; font-weight: 500; color: var(--text-secondary); }
+    .form-group input,
+    .form-group textarea {
+      background: var(--cream); border: 1.5px solid var(--sand);
+      border-radius: 8px; padding: 0.7rem 1rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+      color: var(--text-primary); transition: border-color 0.2s;
+      outline: none; resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--rust); background: var(--warm-white); }
+    .form-group textarea { min-height: 120px; }
+    .form-submit {
+      width: 100%; padding: 0.75rem;
+      background: var(--rust); color: #fff;
+      border: none; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 500;
+      cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;
+    }
+    .form-submit:hover { background: var(--rust-light); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(196,98,45,0.3); }
+    .form-success {
+      display: none; text-align: center; padding: 1.5rem;
+      background: var(--cream); border: 1px solid var(--sand);
+      border-radius: 10px; color: var(--text-secondary); font-size: 0.9rem;
+    }
+    .form-success svg { display: block; margin: 0 auto 0.75rem; color: var(--rust); }
+    .contact-intro p {
+      font-size: 1rem; line-height: 1.8; color: var(--text-secondary);
+      margin-bottom: 2rem; font-weight: 300;
+    }
+    .contact-intro p {
+      font-size: 1rem; line-height: 1.8; color: var(--text-secondary);
+      margin-bottom: 2rem; font-weight: 300;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link-row {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem; border-radius: 10px;
+      background: var(--cream); border: 1px solid var(--sand);
+      text-decoration: none; color: var(--text-primary);
+      transition: all 0.2s;
+    }
+    .contact-link-row:hover { border-color: var(--rust); background: var(--rust-pale); transform: translateX(4px); }
+    .contact-link-row .icon { color: var(--rust); flex-shrink: 0; }
+    .contact-link-row .link-info .link-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); }
+    .contact-link-row .link-info .link-value { font-size: 0.9rem; font-weight: 500; color: var(--deep-brown); }
+
+    .academic-links h3 {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--rust); margin-bottom: 1.25rem;
+    }
+    .academic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .academic-card {
+      background: var(--cream); border: 1px solid var(--sand);
+      border-radius: 10px; padding: 1.25rem;
+      text-decoration: none; color: var(--text-primary);
+      transition: all 0.2s; display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .academic-card:hover { border-color: var(--rust); background: var(--rust-pale); }
+    .academic-card svg { fill: var(--rust); width: 22px; height: 22px; }
+    .academic-card .ac-name { font-size: 0.85rem; font-weight: 500; color: var(--deep-brown); }
+    .academic-card .ac-sub { font-size: 0.75rem; color: var(--text-light); }
+
+    /* footer */
+    footer {
+      background: var(--deep-brown); color: var(--taupe);
+      text-align: center; padding: 2rem;
+      font-size: 0.82rem;
+    }
+    footer span { color: var(--rust-light); }
+
+    /* response */
+    @media (max-width: 900px) {
+      .home-hero { grid-template-columns: 1fr; padding: 3rem 2rem; text-align: center; }
+      .home-visual { order: -1; }
+      .home-actions, .social-links { justify-content: center; }
+      .home-stats { grid-template-columns: repeat(3, 1fr); padding: 0 2rem 3rem; }
+      .page-header, .timeline-section, .exp-grid, .news-list, .contact-layout { padding-left: 2rem; padding-right: 2rem; }
+      .content-grid { grid-template-columns: 1fr; padding: 2rem; }
+      .central-timeline-wrap { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .academic-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- navigation page -->
+  <nav>
+    <div class="nav-logo" onclick="showPage('home')">DUC DUY <span>NGUYEN</span></div>
+    <div class="nav-links">
+      <button id="nav-home" class="active" onclick="showPage('home')">Home</button>
+      <button id="nav-about" onclick="showPage('about')">About</button>
+      <button id="nav-resume" onclick="showPage('resume')">Resume</button>
+      <button id="nav-experience" onclick="showPage('experience')">Experience</button>
+      <button id="nav-contact" onclick="showPage('contact')">Contact</button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════
+       HOME PAGE
+  ══════════════════════════════════ -->
+  <div id="page-home" class="page active">
+    <div class="home-hero">
+      <div class="home-text">
+        <div class="home-eyebrow">PhD Researcher - Marine Technology - NTNU</div>
+        <h1 class="home-name">
+          Hello,<br>I'm <em>Duc Duy</em><br>Nguyen.
+        </h1>
+        <p class="home-tagline">
+          Researcher with 6+ years of experience in internal combustion engine testing and development; experience across research and industrial environments. Specialised in experimental combustion analysis, engine performance, and alternative fuel systems.
+        </p>
+        <div class="home-actions">
+          <button class="btn-primary" onclick="showPage('contact')">Get in Touch</button>
+          <button class="btn-ghost" onclick="showPage('resume')">View Resume</button>
         </div>
+        <div class="social-links">
+          <!-- GitHub -->
+          <a class="social-link" href="https://duyngd.github.io/" title="GitHub" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a class="social-link" href="https://www.linkedin.com/in/ducduy-nguyen/" title="LinkedIn" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <!-- Google Scholar -->
+          <a class="social-link" href="https://scholar.google.com/citations?user=yt9y2wIAAAAJ&hl=en" title="Google Scholar" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+          </a>
+          <!-- ResearchGate -->
+          <a class="social-link" href="https://www.researchgate.net/profile/Ducduy-Nguyen" title="ResearchGate" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.123 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53h-.005a3.334 3.334 0 0 0 .113.438c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.385-.348.664-.638.876-.29.212-.738.35-1.227.35-.545 0-.901-.15-1.21-.353-.306-.203-.517-.454-.67-.915a3.136 3.136 0 0 1-.147-.762 17.366 17.367 0 0 1-.034-.656c-.01-.26-.014-.572-.014-.939a26.401 26.403 0 0 1 .014-.938 15.821 15.822 0 0 1 .035-.656 3.19 3.19 0 0 1 .148-.76 1.89 1.89 0 0 1 .742-1.01c.344-.244.593-.352 1.137-.352.508 0 .815.096 1.144.303.33.207.528.492.764.925.047.094.111.118.198.07l1.044-.43c.075-.048.09-.115.042-.199a3.549 3.549 0 0 0-.466-.742 3 3 0 0 0-.679-.607 3.313 3.313 0 0 0-.903-.41A4.068 4.068 0 0 0 19.586 0zM8.217 5.836c-1.69 0-3.036.086-4.297.086-1.146 0-2.291 0-3.007-.029v.831l1.088.2c.744.144 1.174.488 1.174 2.264v11.288c0 1.777-.43 2.12-1.174 2.263l-1.088.2v.832c.773-.029 2.12-.086 3.465-.086 1.29 0 2.951.057 3.667.086v-.831l-1.49-.2c-.773-.115-1.174-.487-1.174-2.264v-4.784c.688.057 1.29.057 2.206.057 1.748 3.123 3.41 5.472 4.355 6.56.86 1.032 2.177 1.691 3.839 1.691.487 0 1.003-.086 1.318-.23v-.744c-1.031 0-2.063-.716-2.808-1.518-1.26-1.376-2.95-3.582-4.355-6.074 2.32-.545 4.04-2.722 4.04-4.9 0-3.208-2.492-4.698-5.758-4.698zm-.515 1.29c2.406 0 3.839 1.26 3.839 3.552 0 2.263-1.547 3.782-4.097 3.782-.974 0-1.404-.03-2.063-.086v-7.19c.66-.059 1.547-.059 2.32-.059z"/></svg>
+          </a>
+          <!-- ORCID -->
+          <a class="social-link" href="https://orcid.org/0000-0001-7789-3351" title="ORCID" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947.95.95 0 0 1 .947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="home-visual">
+        <div class="profile-ring">
+          <img class="profile-img" src="https://github.com/duyngd.png" alt="Duc Duy Nguyen" />
+        </div>
+        <div class="profile-badge">
+          <strong>PhD Candidate</strong>
+          Marine Technology · NTNU
+        </div>
+      </div>
     </div>
 
-    <!-- About Section -->
-    <section id="about" class="bg-gray-100 py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">About Me</h2>
-            <div class="bg-white rounded-lg shadow-lg p-8">
-                <p class="text-gray-600 leading-relaxed">
-                    My name is Duc Duy NGUYEN, you can call by my English name "Joey".
-                </p>
-                <div class="mt-4">
-                    <p class="text-gray-600 leading-relaxed">
-                        Currently, I'm a PhD candidate at Norwegian University of Science and Technology (NTNU) specializing in clean energy and combustion technology. 
-                        With experience in hydrogen fuel research, engine development, and facilities engineering, I focus on developing 
-                        sustainable solutions for marine applications. My research centers on ammonia and hydrogen as clean-burning fuels for marine engines,
-                        combining theoretical modeling with practical experimentation.
-                    </p>
-                </div>
-                <div class="mt-4">
-                    <p class="text-gray-600 leading-relaxed">
-                        I had 5 years of experience in the field of thermal engineering, and 5 years of experience in the field of internal combustion engine
-                        and is a specialist in the field of spark-ignition combustion, pressure charging, hydrogen fuel.
-                    </p>
-                </div>
-                <div class="mt-4">
-                    <p class= "text-gray-600 leading-relaxed">
-                        I originally had a career in industry, spending 5 years working as project engineer. Before moving to NTNU, I have served as a 
-                        graduate researcher at the Clean Combustion Research Center (Now Clean Energy Research Platform) at KAUST in Saudi Arabia, 
-                        and Korea Institute of Machinery and Materials in Korea. I hold a Master's degree in Mechanical Engineering from 
-                        University of Science and Technology in Korea.
-                    </p>
-                </div>
-                <div class="mt-4">
-                    <p class="text-sm text-gray-500">📍  Current Address: Skansegata 4B, 7014, Trondheim, Norway</p>
-                    <p class="text-sm text-gray-500">📧 ducduy.nguyen0492@gmail.com</p>
-                </div>
+<!--     <div class="home-stats">
+      <div class="stat-card">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Publications in peer-reviewed journals</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Years in engineering & research</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Countries of research experience</div>
+      </div>
+    </div> -->
+  </div>
+
+  <!-- ══════════════════════════════════
+       ABOUT PAGE
+  ══════════════════════════════════ -->
+  <div id="page-about" class="page">
+    <div class="page-header">
+      <div class="page-header-eyebrow">About me</div>
+      <h1>Researcher.<br><em>Engineer.</em> Enthusiast.</h1>
+    </div>
+
+    <div class="content-grid">
+      <div class="prose">
+        <p>My name is Duc Duy Nguyen — you can call me <strong>Joey</strong>. I am a PhD candidate at the Norwegian University of Science and Technology (NTNU), where my research centres on ammonia and hydrogen as clean-burning fuels for marine engines.</p>
+        <p>My work sits at the intersection of experimental combustion science and maritime decarbonization. Using a single-cylinder optical engine equipped with a hydrogen pre-chamber jet ignition system, I investigate lean-burn ammonia-hydrogen mixtures, combining high-speed optical diagnostics — natural luminosity, OH* and NH* chemiluminescence — with pressure analysis and FTIR emissions measurement.</p>
+        <p>Prior to NTNU, I served as a graduate researcher at the Clean Combustion Research Center (CCRC) at KAUST in Saudi Arabia, studying hydrogen combustion behaviour in CFR engines, and at the Korea Institute of Machinery and Materials (KIMM), where I developed hydrogen-powered engines for Power-to-Gas systems.</p>
+        <p>My industrial career spans five years as a project and facilities engineer across Vietnam — at Terumo BCT, ON Semiconductor (now Onsemi), and HOYA Lens — giving me a grounded perspective on bringing research from laboratory to real-world application. I hold a Master of Engineering in Environment & Energy Mechanical Engineering from the University of Science and Technology (UST) in Korea, and a degree in Thermal Engineering from HCMUTE in Vietnam.</p>
+
+        <!-- News subsection -->
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--deep-brown);margin:2.5rem 0 1.5rem;">Latest <em style="color:var(--rust);">News</em></h2>
+      </div>
+
+      <!-- Sidebar -->
+      <div>
+        <div class="sidebar-card">
+          <h3>Contact</h3>
+          <div class="info-row">
+            <div class="info-row-icon">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
             </div>
-        </div>
-    </section>
-
-    <!-- News Section -->
-    <section id="news" class="section bg-gray-100 py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="flex items-center justify-center space-x-4 text-3xl font-bold text-center text-gray-800 mb-8">
-                <span>Latest News</span>
-                <a href="#" class="inline-flex items-center text-gray-500 hover:text-gray-900 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </h2>
-            <div class="space-y-4">
-
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-56 p-6 bg-blue-50">
-                            <div class="font-bold text-xl mb-2">October 2025</div>
-                        </div>
-                        <div class="flex-1 p-6">
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                The first set of my PhD research data has been published in the Fuel journal. I also presented another piece of my work at the Powertrain Systems for a Sustainable Futures Conference 2025.
-                                <a href="https://doi.org/10.1016/j.fuel.2025.137186" class="text-blue-500 hover:text-blue-600">Article →</a>
-                                <a href="https://eventsportal.imeche.org/event/sessions?id=Powertrains_Systems_for_a_Sustainable_Future2500972344" class="text-blue-500 hover:text-blue-600">Conference →</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-56 p-6 bg-blue-50">
-                            <div class="font-bold text-xl mb-2">September 2025</div>
-                        </div>
-                        <div class="flex-1 p-6">
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                Honoured to be a part of DAAD German Academic Exchange Service Green Hydrogen Research Tour, 2025. It was a pleasure getting to see the facilities and learn about green hydrogen research in Germany.
-                                <a href="https://www.daad.de/en/studying-in-germany/scholarships/daad-funding-programmes/green-hydrogen/research-tour/2025-info/" class="text-blue-500 hover:text-blue-600">More about the tour →</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-56 p-6 bg-blue-50">
-                            <div class="font-bold text-xl mb-2">March 2025</div>
-                        </div>
-                        <div class="flex-1 p-6">
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                Published paper on life cycle assessment of hydrogen/ammonia as potential alternative fuels for marine engines in the International Journal of Hydrogen Energy. The study explore the environmental footprint of hydrogen and ammonia for marine engines.
-                                <a href="https://doi.org/10.1016/j.ijhydene.2025.02.331" class="text-blue-500 hover:text-blue-600">Article →</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-56 p-6 bg-blue-50">
-                            <div class="font-bold text-xl text-gray-800">September 2024</div>
-                        </div>
-                        <div class="flex-1 p-6">
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                Presented on hydrogen and ammonia as a fuel for marine engines during Hydrogeni Consortium Days event in Trondheim, Norway.
-                                <a href="https://hydrogeni.no/news/hydrogeni-holds-second-consortium-days-event-in-trondheim/" class="text-blue-500 hover:text-blue-600">Event page →</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-56 p-6 bg-blue-50">
-                            <div class="font-bold text-xl text-gray-800">March 2024</div>
-                        </div>
-                        <div class="flex-1 p-6">
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                Presented research findings on pre-chamber spark ignition at European PhD Hydrogen Conference in Ghent, Belgium. The presentation focused on novel approaches to improve combustion of ammonia in marine applications.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-56 p-6 bg-blue-50">
-                            <div class="font-bold text-xl mb-2">February 2024</div>
-                        </div>
-                        <div class="flex-1 p-6">
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                Published paper on hydrogen/ammonia fuel application in light-duty vehicles in the International Journal of Engine Research. The paper demonstrates the feasible of using hydrogen/ammonia as fuels in transportation sector.
-                                <a href="https://doi.org/10.1177/14680874241239479" class="text-blue-500 hover:text-blue-600">Article →</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-56 p-6 bg-blue-50">
-                            <div class="font-bold text-xl mb-2">November 2023</div>
-                        </div>
-                        <div class="flex-1 p-6">
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                Presented results during my time at KAUST on hydrogen fueled variable compression ratio at Nordic Flame Day 2023 in Trondheim, Norway.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-56 p-6 bg-blue-50">
-                            <div class="font-bold text-xl mb-2">August 2023</div>
-                        </div>
-                        <div class="flex-1 p-6">
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                Started PhD at department of Marine Technology - NTNU (Norway). The PhD project is part of the FME-HYDROGENi (Norwegian research and innovation centre for hydrogen and ammonia).
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="info-row-text">Skansegata 4B, 7014 Trondheim, Norway</div>
+          </div>
+          <div class="info-row">
+            <div class="info-row-icon">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
-        </div>
-    </section>
-
-        <!-- Education Section -->
-
-        <section id="education" class="section bg-white py-20">
-            <div class="max-w-6xl mx-auto px-4">
-                <h2 class="flex items-center justify-center space-x-4 text-3xl font-bold text-center text-gray-800 mb-8">
-                    <span>Education</span>
-                    <a href="#" class="inline-flex items-center text-gray-500 hover:text-gray-900 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                </h2>  
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                        <div class="p-6">
-                            <img src="images/NTNU_logo.png" alt="NTNU Logo" class="absolute top-4 right-4 h-12 w-auto object-contain"/>
-                            <h3 class="font-bold text-xl mb-2">Philosophiae Doctor (PhD)</h3>
-                            <div class="text-gray-600 mb-2">
-                                <span class="text-sm">NTNU (Norway)</span>
-                                <span class="mx-2">|</span>
-                                <span class="text-sm">Aug 2023 - Present</span>
-                            </div>
-                            <div class="text-gray-600 mb-2">
-                                <span class="text-sm">Marine Technology</span>
-                            </div>
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                <h1 class="font-bold text-sm">Thesis:</h1>
-                                <div class="text-gray-600 mb-2">
-                                    Combustion of Ammonia and Hydrogen Fuel Mixtures in Marine Engines
-                                </div>
-                                <div class="mt-4">
-                                    <p class="text-gray-600 leading-relaxed">
-                                        Development and exploration of ammonia and hydrogen as clean-burning fuels for marine engines. 
-                                        Evaluate the environmental impact of utilising hydrogen and ammonia as a fuel in marine engines.
-                                    </p>
-                                    <div class="mt-4">
-                                        <p class="text-gray-600 leading-relaxed">
-                                            Supervisor: David Robert Emberson
-                                        </p>
-                                        <p class="text-gray-600 leading-relaxed">
-                                            Co-Supervisor: Eilif Pedersen and James W.G. Turner
-                                        </p>
-                                    </div>
-                                </div>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                        <div class="p-6">
-                            <img src="images/ust_logo.png" alt="UST Logo" class="absolute top-4 right-4 h-12 w-auto object-contain"/>
-                            <h3 class="font-bold text-xl mb-2">Master of Engineering</h3>
-                            <div class="text-gray-600 mb-2">
-                                <span class="text-sm">UST (South Korea)</span>
-                                <span class="mx-2">|</span>
-                                <span class="text-sm">2019 - 2021</span>
-                            </div>
-                            <div class="text-gray-600 mb-2">
-                                <span class="text-sm">Environment & Energy Mechanical Engineering</span>
-                            </div>
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                <h1 class="font-bold text-sm">Thesis:</h1>
-                                <div class="text-gray-600 mb-2">
-                                    Research on Power Enhancement in Hydrogen-Fueled Spark Ignition Engine
-                                </div>
-                                <div class="mt-4">
-                                    <p class="text-gray-600 leading-relaxed">
-                                        Combustion, thermodynamics, fluid dynamics, heat transfer, and their utilisations into real systems.
-                                        Energy conversion and controlling of air pollution in terms of combustion.
-                                    </p>
-                                    <div class="mt-4">
-                                        <p class="text-gray-600 leading-relaxed">
-                                            Advisor: Young Choi
-                                        </p>
-                                    </div>
-                                </div>
-                            </p>
-                        </div>
-                    </div>
-        
-                    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                        <div class="p-6">
-                            <img src="images/HCMUTE_logo.png" alt="HCMUTE Logo" class="absolute top-4 right-4 h-14 w-auto object-contain"/>
-                            <h3 class="font-bold text-xl mb-2">The Degree of Engineer</h3>
-                            <div class="text-gray-600 mb-2">
-                                <span class="text-sm">HCMUTE (Vietnam)</span>
-                                <span class="mx-2">|</span>
-                                <span class="text-sm">2010 - 2014</span>
-                            </div>
-                            <div class="text-gray-600 mb-2">
-                                <span class="text-sm">Thermal Engineering</span>
-                            </div>
-                            <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                                <h1 class="font-bold text-sm">Thesis:</h1>
-                                <div class="text-gray-600 mb-2">
-                                    Study on Improving Minichannel Heat Sink to Increase the Heat Transfer Efficiency
-                                </div>
-                                <div class="mt-4">
-                                    <p class="text-gray-600 leading-relaxed">
-                                        Thermal engineering technology.                                        
-                                        Fundamental theories of heat and mass transfer, fluid mechanics, combustion, industrial environment and their applications (boiler, turbine, air conditioner, power generation).
-                                        Designing, calculating, testing, diagnosing thermal systems or managing and providing maintenance services for thermal systems.
-                                    </p>
-                                    <div class="mt-4">
-                                        <p class="text-gray-600 leading-relaxed">
-                                            Advisor: Thanhtrung Dang
-                                        </p>
-                                    </div>
-                                </div>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="info-row-text"><a href="mailto:duc.d.nguyen@ntnu.no">duc.d.nguyen@ntnu.no</a></div>
+          </div>
+          <div class="info-row">
+            <div class="info-row-icon">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
-        </section>
+            <div class="info-row-text"><a href="mailto:ducduy.nguyen0492@gmail.com">ducduy.nguyen0492@gmail.com</a></div>
+          </div>
+        </div>
 
-    <!-- Work Experience Section -->
+        <div class="sidebar-card">
+          <h3>Research Interests</h3>
+          <div class="tag-list">
+            <span class="tag">Combustion</span>
+            <span class="tag">Ammonia</span>
+            <span class="tag">Hydrogen</span>
+            <span class="tag">Internal Combustion Engines</span>
+            <span class="tag">Pre-chamber Ignition</span>
+            <span class="tag">Optical Diagnostics</span>
+            <span class="tag">Clean Energy</span>
+            <span class="tag">LCA / LCOE</span>
+          </div>
+        </div>
 
-    <section id="experience" class="section bg-white py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="flex items-center justify-center space-x-4 text-3xl font-bold text-center text-gray-800 mb-8">
-                <span>Experience</span>
-                <a href="#" class="inline-flex items-center text-gray-500 hover:text-gray-900 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </h2>  
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="p-6">
-                        <img src="images/NTNU_logo.png" alt="NTNU Logo" class="absolute top-4 right-4 h-12 w-auto object-contain"/>
-                        <h3 class="font-bold text-xl mb-2">PhD Researcher</h3>
-                        <div class="text-gray-600 mb-2">
-                            <span class="text-sm">NTNU</span>
-                            <span class="mx-2">|</span>
-                            <span class="text-sm">2023 - Present</span>
-                        </div>
-                        <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                            Research on ammonia and hydrogen as clean-burning fuels for marine engines. Developing sustainable solutions for maritime applications and conducting experimental studies with theoretical modeling of alternative fuels.
-                        </p>
-                    </div>
-                </div>
-    
-                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="p-6">
-                        <img src="images/KAUST_logo.png" alt="KAUST Logo" class="absolute top-4 right-4 h-12 w-auto object-contain"/>
-                        <h3 class="font-bold text-xl mb-2">Graduate Researcher</h3>
-                        <div class="text-gray-600 mb-2">
-                            <span class="text-sm">KAUST (Saudi Arabia)</span>
-                            <span class="mx-2">|</span>
-                            <span class="text-sm">2022 - 2023</span>
-                        </div>
-                        <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                            Researched hydrogen combustion characteristics in CFR engines. Studied NOx reactions and knock characteristics while publishing multiple papers on hydrogen engine technology and alternative fuel applications.    
-                        </p>
-                    </div>
-                </div>
-    
-                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="p-6">
-                        <img src="images/KIMM_logo.png" alt="KIMM Logo" class="absolute top-4 right-4 h-12 w-auto object-contain"/>
-                        <h3 class="font-bold text-xl mb-2">Research Assistant</h3>
-                        <div class="text-gray-600 mb-2">
-                            <span class="text-sm">KIMM (South Korea)</span>
-                            <span class="mx-2">|</span>
-                            <span class="text-sm">2019 - 2021</span>
-                        </div>
-                        <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                            Conducted research on hydrogen-powered engines for Power-to-Gas systems. Optimized engine performance and efficiency while collaborating with international research teams on breakthrough technologies.
-                        </p>
-                    </div>
-                </div>
+        <div class="sidebar-card">
+          <h3>Tools & Languages</h3>
+          <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">Cantera</span>
+            <span class="tag">LOGEresearch</span>
+            <span class="tag">SimaPro</span>
+            <span class="tag">LaTeX</span>
+            <span class="tag">CAD</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- News feed (spans full width below grid) -->
+    <div class="news-list" style="padding-bottom:3rem;">
+      <div class="news-item">
+        <div class="news-date">October 2025</div>
+        <div class="news-body">
+          <p>First set of PhD research data published in <em>Fuel</em> journal. 
+          Also presented at the Powertrain Systems for a Sustainable Futures Conference 2025. 
+          <a href="https://doi.org/10.1016/j.fuel.2025.137186" target="_blank">Article →</a> 
+          <a href="https://eventsportal.imeche.org/event/sessions?id=Powertrains_Systems_for_a_Sustainable_Future2500972344" target="_blank">Conference →</a>
+          </p>
+        </div>
+        <p>
+        <div class="news-images">
+          <img src="images/Publication_1.png" alt="Fuel Publication">
+          <img src="images/IMECHE.jpg" alt="IMECHE conference">
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">September 2025</div>
+        <div class="news-body"><p>Honoured to participate in the DAAD Green Hydrogen Research Tour 2025 in Germany — a unique opportunity to visit leading facilities and engage with researchers shaping the hydrogen economy. <a href="https://www.daad.de/en/studying-in-germany/scholarships/daad-funding-programmes/green-hydrogen/research-tour/2025-info/" target="_blank">More about the tour →</a></p></div>
+        <p>
+        <div class="news-images">
+        <figure>
+          <img src="images/DAAD.webp" alt="DAAD GH2">
+          <figcaption>Photo: © Laura Mendez Prencke</figcaption>
+        </figure>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">March 2025</div>
+        <div class="news-body"><p>Published paper on life cycle assessment of hydrogen/ammonia as alternative fuels for marine engines in the <em>International Journal of Hydrogen Energy</em>. <a href="https://doi.org/10.1016/j.ijhydene.2025.02.331" target="_blank">Article →</a></p></div>
+        <p>
+        <div class="news-images">
+          <img src="images/LCA_Pub.png" alt="LCA Publication">
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">September 2024</div>
+        <div class="news-body"><p>Presented on hydrogen and ammonia as fuels for marine engines at the HYDROGENi Consortium Days event in Trondheim, Norway. <a href="https://hydrogeni.no/news/hydrogeni-holds-second-consortium-days-event-in-trondheim/" target="_blank">Event page →</a></p></div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">March 2024</div>
+        <div class="news-body"><p>Presented research on pre-chamber spark ignition at the European PhD Hydrogen Conference in Ghent, Belgium — focusing on novel approaches to improve ammonia combustion in marine applications.</p></div>
+        <p>
+        <div class="news-images">
+          <img src="images/Ephyc_conf.jpg" alt="Ephyc Conference">
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">February 2024</div>
+        <div class="news-body"><p>Published paper on hydrogen/ammonia application in light-duty vehicles in the <em>International Journal of Engine Research</em>. <a href="https://doi.org/10.1177/14680874241239479" target="_blank">Article →</a></p></div>
+        <p>
+        <div class="news-images">
+          <img src="images/IJER_Review.png" alt="IJER Publication">
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">November 2023</div>
+        <div class="news-body"><p>Presented results on hydrogen-fuelled variable compression ratio engines at Nordic Flame Day 2023 in Trondheim, Norway.</p></div>
+        <p>
+        <div class="news-images">
+          <img src="images/NFD2023.png" alt="NFD 2023">
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">August 2023</div>
+        <div class="news-body"><p>Started PhD at the Department of Marine Technology, NTNU. The project is part of the FME-HYDROGENi research centre for hydrogen and ammonia.</p></div>
+        <p>
+        <div class="news-images">
+          <img src="images/NTNU_phd.jpg" alt="PhD started">
+        </div>
+      </div>
+    </div>
+  </div>
 
-                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="p-6">
-                        <img src="images/terumo_logo.png" alt="Terumo Logo" class="absolute top-4 right-4 h-12 w-auto object-contain"/>
-                        <h3 class="font-bold text-xl mb-2">Project Engineer</h3>
-                        <div class="text-gray-600 mb-2">
-                            <span class="text-sm">Terumo BCT Vietnam</span>
-                            <span class="mx-2">|</span>
-                            <span class="text-sm">2018 - 2019</span>
-                        </div>
-                        <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                            Evaluation, and testing of equipment in support for manufacturing site modifications and upgrades.
-                            Responsible for the development of mechanical system (boiler, gases, fire protection)and HVAC standards/guidelines for all projects.
-                        </p>
-                    </div>
-                </div>
-    
-                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="p-6">
-                        <img src="images/Onsemi_logo.svg" alt="Onsemi Logo" class="absolute top-4 right-4 h-auto w-16 object-contain"/>
-                        <h3 class="font-bold text-xl mb-2">Facilities Engineer</h3>
-                        <div class="text-gray-600 mb-2">
-                            <span class="text-sm">ON Semiconductor Vietnam (Now Onsemi Vietnam)</span>
-                            <span class="mx-2">|</span>
-                            <span class="text-sm">2016 - 2018</span>
-                        </div>
-                        <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                            Performs design and implementation for Utility System Energy Saving project.
-                            Provides technical guidance to safety and maintenance personnel in HVAC system, gases, fire protection, pollution control devices (scrubber).    
-                        </p>
-                    </div>
-                </div>
-    
-                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <div class="p-6">
-                        <img src="images/Hoya_logo.svg" alt="Hoya Logo" class="absolute top-4 right-4 h-auto w-16 object-contain"/>
-                        <h3 class="font-bold text-xl mb-2">Facilities Technician</h3>
-                        <div class="text-gray-600 mb-2">
-                            <span class="text-sm">HOYA Lens Vietnam</span>
-                            <span class="mx-2">|</span>
-                            <span class="text-sm">2014 - 2016</span>
-                        </div>
-                        <p class="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-300">
-                            Responsible for maintenance of utility equipment system(boiler, fire protection, HVAC, air pollution control) of the firm..
-                        </p>
-                    </div>
-                </div>
+  <!-- ══════════════════════════════════
+       RESUME PAGE (TIMELINE)
+  ══════════════════════════════════ -->
+  <div id="page-resume" class="page">
+    <div class="page-header">
+      <div class="page-header-eyebrow">Curriculum Vitae</div>
+      <h1>Education &amp; <em>Career</em></h1>
+    </div>
+
+    <div class="central-timeline-wrap">
+      <!-- Legend -->
+      <div class="timeline-legend">
+        <div class="legend-item"><div class="legend-dot academic"></div> Education </div>
+        <div class="legend-item"><div class="legend-dot industry"></div> Career </div>
+      </div>
+
+      <!-- Column headers -->
+      <div class="timeline-col-headers">
+        <div style="text-align: right;"><span class="timeline-col-header academic">← Education </span></div>
+        <div></div>
+        <div><span class="timeline-col-header industry">Career →</span></div>
+      </div>
+
+      <!-- Rows (chronological, newest first) -->
+      <div class="central-timeline-rows">
+
+        <!-- 2023–Present: PhD Researcher (academic left) -->
+        <div class="ct-row">
+          <div class="ct-left">
+            <div class="timeline-card academic" style="position:relative;">
+              <img src="images/NTNU_logo.png" alt="NTNU Logo" style="position:absolute;top:0.5rem;right:1rem;height:36px;width:auto;object-fit:contain;">
+              <h3>PhD Researcher</h3>
+              <div class="timeline-institution">NTNU · Trondheim, Norway</div>
+              <p>Experimental investigation of pre-chamber jet ignition for lean ammonia-hydrogen combustion in marine engines. Optical diagnostics, combustion analysis, emissions characterisation.</p>
+              <div class="thesis">
+                <div class="thesis-label">Thesis (preliminary title)</div>
+                <p>Hydrogen Pre-Chamber Jet Ignition for Lean Ammonia Combustion - Optical Investigation and Combustion Analysis</p>
+              </div>
+              <p style="margin-top:0.6rem;font-size:0.8rem;color:var(--text-light);">Supervisor: David Robert Emberson<br>Co-supervisors: Eilif Pedersen · James W.G. Turner</p>
             </div>
+          </div>
+          <div class="ct-center">
+            <div class="ct-dot academic"></div>
+            <div class="ct-date academic">2023–<br>Present</div>
+          </div>
+          <div class="ct-right"><div class="ct-empty"></div></div>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="bg-white py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="flex items-center justify-center space-x-4 text-3xl font-bold text-center text-gray-800 mb-8">
-                <span>Projects</span> 
-                <a href="#" class="inline-flex items-center text-gray-500 hover:text-gray-900 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <img src="images/hydrogeni.png" alt="Project 1" class="w-full">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2">HYDROGENi</h3>
-                        <p class="text-gray-600">WP 3.2 - Maritime H2 and NH3 Technologies, development and exploration of ammonia and hydrogen as clean-burning fuels for marine engines.</p>
-                        <div class="mt-4 flex space-x-4">
-                            <a href="https://hydrogeni.no/" class="text-blue-500 hover:text-blue-600">View Project →</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <img src="images/kaust.png" alt="Project 2" class="w-full">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2">Hydrogen CFR Engine</h3>
-                        <p class="text-gray-600">Hydrogen fuel and its combustion characteristics in CFR engine, which focuses on: hydrogen abnormal combustion in CFR engine, HCCI compression ratio correction, NOx reactions and their effect on combustion, knock characteristic.</p>
-                        <div class="mt-4">
-                            <a href="https://ccrc.kaust.edu.sa/about/facilities/facilities-details/engines-and-fuels-lab/cooperative-fuel-research-engine-(cfr)" class="text-blue-500 hover:text-blue-600">View Project →</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
-                    <img src="images/kimm.png" alt="Project 3" class="w-full">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2">Hydrogen Powered Engine</h3>
-                        <p class="text-gray-600">Research and development in improving the performance for Hydrogen Internal CombustionEngine applied in Power-to-Gas system</p>
-                        <div class="mt-4">
-                            <a href="https://www.kimm.re.kr/eng/sub011001/view/id/781" class="text-blue-500 hover:text-blue-600">View Project →</a>
-                        </div>
-                    </div>
-                </div>
+        <!-- 2022–2023: Graduate Researcher KAUST -->
+        <div class="ct-row">
+          <div class="ct-left"><div class="ct-empty"></div></div>
+          <div class="ct-center">
+            <div class="ct-dot industry"></div>
+            <div class="ct-date industry">2022–<br>2023</div>
+          </div>
+          <div class="ct-right">
+            <div class="timeline-card industry" style="position:relative;">
+              <img src="images/KAUST_logo.png" alt="KAUST Logo" style="position:absolute;top:0.5rem;right:1rem;height:36px;width:auto;object-fit:contain;">
+              <h3>Graduate Researcher</h3>
+              <div class="timeline-institution">KAUST · Saudi Arabia</div>
+              <p>Hydrogen combustion in CFR engines — NOx reactions, knock characteristics, HCCI compression ratio correction. Multiple journal publications.</p>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="bg-gray-100 py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="flex items-center justify-center space-x-4 text-3xl font-bold text-center text-gray-800 mb-8">
-                <span>Skills</span> 
-                <a href="#" class="inline-flex items-center text-gray-500 hover:text-gray-900 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105">
-                    <h3 class="font-bold mb-2">Technical Skills</h3>
-                    <p class="text-gray-600">Combustion analysis, Thermodynamics, Fluid Dynamics, Engine Controls</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105">
-                    <h3 class="font-bold mb-2">Research</h3>
-                    <p class="text-gray-600">Hydrogen Fuel, Ammonia Fuel, Marine Engines, Clean Energy</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105">
-                    <h3 class="font-bold mb-2">Analysis</h3>
-                    <p class="text-gray-600">LCA, LCOE, Combustion Analysis, Environmental Impact</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105">
-                    <h3 class="font-bold mb-2">Tools</h3>
-                    <p class="text-gray-600">SimaPro, Matlab, Python, CAD</p>
-                </div>
+        <!-- 2019–2021: Research Assistant + MEng (both sides) -->
+        <div class="ct-row">
+          <div class="ct-left">
+            <div class="timeline-card academic" style="position:relative;">
+              <img src="images/ust_logo.png" alt="UST Logo" style="position:absolute;top:0.5rem;right:1rem;height:36px;width:auto;object-fit:contain;">
+              <h3>Master of Engineering</h3>
+              <div class="timeline-institution">UST · Daejeon, South Korea</div>
+              <p>Combustion, thermodynamics, fluid dynamics, heat transfer, and their utilisations into real systems. Energy conversion and controlling of air pollution in terms of combustion.</p>
+              <div class="thesis">
+                <div class="thesis-label">Thesis</div>
+                <p>Research on Power Enhancement in Hydrogen-Fueled Spark Ignition Engine</p>
+              </div>
+              <p style="margin-top:0.6rem;font-size:0.8rem;color:var(--text-light);">Advisor: Young Choi</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="bg-white py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="flex items-center justify-center space-x-4 text-3xl font-bold text-center text-gray-800 mb-8">
-                <span>Get In Touch</span> 
-                <a href="#" class="inline-flex items-center text-gray-500 hover:text-gray-900 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </h2>
-            <div class="max-w-lg mx-auto">
-                <div class="bg-gray-100 rounded-lg shadow-lg p-8">
-                    <div class="text-center mb-8">
-                        <p class="text-gray-600">Feel free to contact to me</p>
-                        <a href="mailto:duc.d.nguyen@ntnu.no" class="text-blue-500 hover:text-blue-600">duc.d.nguyen@ntnu.no</a>
-                    </div>
-                    <div class="text-center mb-8">
-                        <p class="text-gray-600">Connect</p>
-                    </div>
-                    <div class="flex justify-center space-x-4">
-                        <a href="https://duyngd.github.io/" class="text-gray-600 hover:text-gray-900 transition duration-300">
-                            <span class="sr-only">GitHub</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/ducduy-nguyen/" class="text-gray-600 hover:text-gray-900">
-                            <span class="sr-only">LinkedIn</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=yt9y2wIAAAAJ&hl=en" class="text-gray-600 hover:text-gray-900 transition duration-300" title="Google Scholar">
-                            <span class="sr-only">Google Scholar</span>
-                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.researchgate.net/profile/Ducduy-Nguyen" class="text-gray-600 hover:text-gray-900 transition duration-300" title="ResearchGate">
-                            <span class="sr-only">ResearchGate icon</span>
-                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.123 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53h-.005a3.334 3.334 0 0 0 .113.438c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.385-.348.664-.638.876-.29.212-.738.35-1.227.35-.545 0-.901-.15-1.21-.353-.306-.203-.517-.454-.67-.915a3.136 3.136 0 0 1-.147-.762 17.366 17.367 0 0 1-.034-.656c-.01-.26-.014-.572-.014-.939a26.401 26.403 0 0 1 .014-.938 15.821 15.822 0 0 1 .035-.656 3.19 3.19 0 0 1 .148-.76 1.89 1.89 0 0 1 .742-1.01c.344-.244.593-.352 1.137-.352.508 0 .815.096 1.144.303.33.207.528.492.764.925.047.094.111.118.198.07l1.044-.43c.075-.048.09-.115.042-.199a3.549 3.549 0 0 0-.466-.742 3 3 0 0 0-.679-.607 3.313 3.313 0 0 0-.903-.41A4.068 4.068 0 0 0 19.586 0zM8.217 5.836c-1.69 0-3.036.086-4.297.086-1.146 0-2.291 0-3.007-.029v.831l1.088.2c.744.144 1.174.488 1.174 2.264v11.288c0 1.777-.43 2.12-1.174 2.263l-1.088.2v.832c.773-.029 2.12-.086 3.465-.086 1.29 0 2.951.057 3.667.086v-.831l-1.49-.2c-.773-.115-1.174-.487-1.174-2.264v-4.784c.688.057 1.29.057 2.206.057 1.748 3.123 3.41 5.472 4.355 6.56.86 1.032 2.177 1.691 3.839 1.691.487 0 1.003-.086 1.318-.23v-.744c-1.031 0-2.063-.716-2.808-1.518-1.26-1.376-2.95-3.582-4.355-6.074 2.32-.545 4.04-2.722 4.04-4.9 0-3.208-2.492-4.698-5.758-4.698zm-.515 1.29c2.406 0 3.839 1.26 3.839 3.552 0 2.263-1.547 3.782-4.097 3.782-.974 0-1.404-.03-2.063-.086v-7.19c.66-.059 1.547-.059 2.32-.059z"/>
-                            </svg>
-                        </a>
-                        <a href="https://orcid.org/0000-0001-7789-3351" class="text-gray-600 hover:text-gray-900 transition duration-300" title="ORCID">
-                            <span class="sr-only">ORCID</span>
-                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947.95.95 0 0 1 .947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+          </div>
+          <div class="ct-center">
+            <div class="ct-dot academic"></div>
+            <div class="ct-date academic">2019–<br>2021</div>
+            <div class="ct-date industry">2019–<br>2021</div>
+          </div>
+          <div class="ct-right">
+            <div class="timeline-card industry" style="position:relative;">
+              <img src="images/KIMM_logo.png" alt="KIMM Logo" style="position:absolute;top:0.5rem;right:1rem;height:36px;width:auto;object-fit:contain;">
+              <h3>Research Assistant</h3>
+              <div class="timeline-institution">KIMM · Daejeon, South Korea</div>
+              <p>Conducted research on hydrogen-powered engines for Power-to-Gas systems. Optimized engine performance and efficiency while collaborating with international research teams on breakthrough technologies.</p>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <p>&copy; 2025 Duy Nguyen. All rights reserved.</p>
+        <!-- 2018–2019: Project Engineer (industry right) -->
+        <div class="ct-row">
+          <div class="ct-left"><div class="ct-empty"></div></div>
+          <div class="ct-center">
+            <div class="ct-dot industry"></div>
+            <div class="ct-date industry">2018–<br>2019</div>
+          </div>
+          <div class="ct-right">
+            <div class="timeline-card industry" style="position:relative;">
+              <img src="images/terumo_logo.png" alt="TERUMO Logo" style="position:absolute;top:0.5rem;right:1rem;height:36px;width:auto;object-fit:contain;">
+              <h3>Project Engineer</h3>
+              <div class="timeline-institution">Terumo BCT · Vietnam</div>
+              <p>Equipment evaluation and testing for manufacturing site modifications. Development of mechanical system standards for boiler, gases, fire protection, and HVAC.</p>
+            </div>
+          </div>
         </div>
-    </footer>
-</body>
-<style>
-    html {
-        scroll-behavior: smooth;
+
+        <!-- 2016–2018: Facilities Engineer (industry right) -->
+        <div class="ct-row">
+          <div class="ct-left"><div class="ct-empty"></div></div>
+          <div class="ct-center">
+            <div class="ct-dot industry"></div>
+            <div class="ct-date industry">2016–<br>2018</div>
+          </div>
+          <div class="ct-right">
+            <div class="timeline-card industry" style="position:relative;">
+              <img src="images/Onsemi_logo.svg" alt="ON Logo" style="position:absolute;top:0.5rem;right:1rem;height:16px;width:auto;object-fit:contain;">
+              <h3>Facilities Engineer</h3>
+              <div class="timeline-institution">ON Semiconductor (Onsemi) · Vietnam</div>
+              <p>Design and implementation of utility system energy saving projects. Technical guidance for HVAC, gases, fire protection and pollution control.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2014–2016: Facilities Technician (industry right) -->
+        <div class="ct-row">
+          <div class="ct-left"><div class="ct-empty"></div></div>
+          <div class="ct-center">
+            <div class="ct-dot industry"></div>
+            <div class="ct-date industry">2014–<br>2016</div>
+          </div>
+          <div class="ct-right">
+            <div class="timeline-card industry" style="position:relative;">
+              <img src="images/Hoya_logo.svg" alt="HOYA Logo" style="position:absolute;top:0.5rem;right:1rem;height:26px;width:auto;object-fit:contain;">
+              <h3>Facilities Technician</h3>
+              <div class="timeline-institution">HOYA Lens · Vietnam</div>
+              <p>Maintenance of utility equipment — boiler, fire protection, HVAC, and air pollution control systems.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2010–2014: BEng (academic left) -->
+        <div class="ct-row">
+          <div class="ct-left">
+            <div class="timeline-card academic" style="position:relative;">
+              <img src="images/HCMUTE_logo.png" alt="HCMUTE Logo" style="position:absolute;top:0.5rem;right:1rem;height:36px;width:auto;object-fit:contain;">
+              <h3>The Degree of Engineer</h3>
+              <div class="timeline-institution">HCMUTE · Ho Chi Minh City, Vietnam</div>
+              <p>Thermal Engineering</p>
+              <div class="thesis">
+                <div class="thesis-label">Thesis</div>
+                <p>Study on Improving Minichannel Heat Sink to Increase Heat Transfer Efficiency</p>
+              </div>
+              <p style="margin-top:0.6rem;font-size:0.8rem;color:var(--text-light);">Advisor: Thanhtrung Dang</p>
+            </div>
+          </div>
+          <div class="ct-center">
+            <div class="ct-dot academic"></div>
+            <div class="ct-date academic">2010–<br>2014</div>
+          </div>
+          <div class="ct-right"><div class="ct-empty"></div></div>
+        </div>
+
+      </div><!-- end central-timeline-rows -->
+    </div><!-- end central-timeline-wrap -->
+  </div>
+
+  <!-- ══════════════════════════════════
+       EXPERIENCE PAGE
+  ══════════════════════════════════ -->
+  <div id="page-experience" class="page">
+    <div class="page-header">
+      <div class="page-header-eyebrow">Projects & Experience</div>
+      <h1>Research &amp; <em>Projects</em></h1>
+    </div>
+
+    <div style="padding:2.5rem 5rem 1rem;">
+      <p style="font-size:1rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);margin-bottom:1.5rem;">Research Projects</p>
+    </div>
+
+    <div class="exp-carousel" id="carousel-projects">
+      <button class="carousel-btn prev" onclick="carouselMove('projects',-1)">
+        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <div class="exp-carousel-track-wrap">
+        <div class="exp-grid" id="grid-projects">
+          <div class="exp-card">
+            <img src="images/hydrogeni.png" alt="Hydrogeni project">
+            <div class="exp-type-badge">Current · NTNU</div>
+            <h3>HYDROGENi — WP 3.2</h3>
+            <div class="org">Maritime H<sub>2</sub> and NH<sub>3</sub> Technologies</div>
+            <div class="period">2023 – Present · Trondheim, Norway</div>
+            <p>Development and experimental exploration of ammonia and hydrogen as clean-burning fuels for marine engines, within the Norwegian FME research centre for hydrogen and ammonia. Optical engine testing, spectroscopic diagnostics, and emissions analysis.</p>
+            <div style="margin-top:1.25rem;"><a href="https://hydrogeni.no/" target="_blank" style="color:var(--rust);font-size:0.85rem;font-weight:500;text-decoration:none;">View Project →</a></div>
+          </div>
+
+          <div class="exp-card">
+            <img src="images/kaust.png" alt="CFR project">
+            <div class="exp-type-badge">KAUST · Saudi Arabia</div>
+            <h3>Hydrogen CFR Engine</h3>
+            <div class="org">Clean Combustion Research Center</div>
+            <div class="period">2022 – 2023</div>
+            <p>Hydrogen combustion characteristics in the Cooperative Fuel Research (CFR) engine: abnormal combustion, HCCI compression ratio correction, NOx reaction pathways, and knock characteristics under variable compression ratios.</p>
+            <div style="margin-top:1.25rem;"><a href="https://ccrc.kaust.edu.sa/about/facilities/facilities-details/engines-and-fuels-lab/cooperative-fuel-research-engine-(cfr)" target="_blank" style="color:var(--rust);font-size:0.85rem;font-weight:500;text-decoration:none;">View Project →</a></div>
+          </div>
+
+          <div class="exp-card">
+            <img src="images/kimm.png" alt="KIMM project">
+            <div class="exp-type-badge">KIMM · South Korea</div>
+            <h3>Hydrogen Powered Engine</h3>
+            <div class="org">Korea Institute of Machinery & Materials</div>
+            <div class="period">2019 – 2021</div>
+            <p>Research and development in improving performance of hydrogen internal combustion engines for Power-to-Gas systems, including turbocharging strategies and optimised spark timing for enhanced output.</p>
+            <div style="margin-top:1.25rem;"><a href="https://www.kimm.re.kr/eng/sub011001/view/id/781" target="_blank" style="color:var(--rust);font-size:0.85rem;font-weight:500;text-decoration:none;">View Project →</a></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn next" onclick="carouselMove('projects', 1)">
+        <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+      </button>
+    <div>
+    <!-- Skills section -->
+
+    </div style="margin-top 0rem;">
+      <p style="margin-top:2rem; font-size:1rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);margin-bottom:1.5rem;">Skills &amp; Expertise</p>
+    </div>
+
+    <div class="news-list" style="margin-top:-3rem;padding-bottom:3rem;">
+      <div class="news-item">
+        <div class="news-date">Experimental works</div>
+        <div class="news-body">
+          <p>4-Stroke hydrogen multi-cylinder internal combustion engine. Engine performance and emissions, combustion analysis.</p>
+          <div class="news-images" style="margin-top:1.5rem">
+            <img src="images/KIMM 2L theta.jpg" alt="KIMM 2L engine">
+            <img src="images/Dewe.png" alt="Dewesoft">
+            <img src="images/KIMM example.png" alt="Example results">
+          </div>
+          <p style="margin-top: 1rem;">CFR engine. Hydrogen fuelled SI and HCCI combustion, abnormal combustion, knock characteristics.</p>
+          <div class="news-images" style="margin-top:1.5rem">
+            <img src="images/CFR engine.jpg" alt="KAUST CFR engine">
+            <img src="images/Knock_cycle.png" alt="Knock">
+          </div>
+          <p style="margin-top: 1rem;">Optical engine. Lean burn mmonia/hydrogen fuelled using pre-chamber jet ignition.</p>
+          <div class="news-images" style="margin-top:1.5rem">
+            <img src="images/NTNU Optical engine.jpg" alt="NTNU optical engine">
+            <img src="images/Operating range.png" alt="Operating range">
+          </div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">Numerical works</div>
+        <div class="news-body">
+          <p>Engine simulation, hydrogen combustion in the engine, knocking profile.</p>
+          <div class="news-images" style="margin-top:1.5rem">
+            <img src="images/GT model.png" alt="GT CFR H2 engine model">
+            <img src="images/CFR TP trajectory.png" alt="GT H2">
+          </div>
+          <p style="margin-top: 1rem;">Combustion kinetics simulation using Cantera, LOGE research.</p>
+          <div class="news-images" style="margin-top:1.5rem">
+            <img src="images/LOGE.png" alt="LOGE sample">
+            <img src="images/Kinetics.png" alt="Combustion kinetics">
+          </div>
+          <p style="margin-top: 1rem;">Life cycle assessment.</p>
+          <div class="news-images" style="margin-top:1.5rem">
+            <figure>
+              <img src="images/simapro.png" alt="Simapro">
+              <figcaption>Photo: ©  ESU-services Ltd.</figcaption>
+            </figure>
+            <figure>
+              <img src="images/LCA.png" alt="Simapro">
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">Others works</div>
+        <div class="news-body">
+          <p>Optical &amp; imaging diagnostics: natural luminosity, intensified CCD chemiluminescence.</p>
+          <div class="news-images" style="margin-top:1.5rem">
+            <img src="images/flame_emission_spectrum.png" alt="Flame spectrum">
+            <img src="images/Images sample.png" alt="Optical sample">
+            <img src="images/Jets analysis.png" alt="Optical analysis">
+          </div>
+          <p style="margin-top: 1rem;">Computer-Aided Design &amp; Engineering CAD modelling.</p>
+          <div class="news-images" style="margin-top:1.5rem">
+            <img src="images/CAD_1.png" alt="Inventor">
+            <img src="images/CAD_2.png" alt="Inventor">
+          </div>
+          <p style="margin-top: 1rem;">Project &amp; facilities management. </p>
+          <p> Equipment evaluation and testing protocols, maintenance planning, utility system commissioning, energy saving project implementation,</p>
+          <p> cross-functional team coordination, vendor management, drawn from 5 years in industry.</p>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+    <footer>© 2025 <span>Duc Duy Nguyen</span>. All rights reserved.</footer>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CONTACT PAGE
+  ══════════════════════════════════ -->
+  <div id="page-contact" class="page">
+    <div class="page-header">
+      <div class="page-header-eyebrow">Get in touch</div>
+      <h1>Let's <em>Connect</em></h1>
+    </div>
+
+    <div class="contact-layout">
+      <div class="contact-intro">
+        <p>Whether you're interested in my works, or just want to talk about clean energy and combustion — I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a class="contact-link-row" href="mailto:duc.d.nguyen@ntnu.no">
+            <div class="icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="link-info">
+              <div class="link-label">Institutional Email</div>
+              <div class="link-value">duc.d.nguyen@ntnu.no</div>
+            </div>
+          </a>
+          <a class="contact-link-row" href="mailto:ducduy.nguyen0492@gmail.com">
+            <div class="icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="link-info">
+              <div class="link-label">Personal Email</div>
+              <div class="link-value">ducduy.nguyen0492@gmail.com</div>
+            </div>
+          </a>
+          <a class="contact-link-row" href="https://www.linkedin.com/in/ducduy-nguyen/" target="_blank">
+            <div class="icon">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div class="link-info">
+              <div class="link-label">LinkedIn</div>
+              <div class="link-value">ducduy-nguyen</div>
+            </div>
+          </a>
+          <a class="contact-link-row" href="https://duyngd.github.io/" target="_blank">
+            <div class="icon">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </div>
+            <div class="link-info">
+              <div class="link-label">GitHub / Website</div>
+              <div class="link-value">duyngd.github.io</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="academic-links">
+        <h3>Academic Profiles</h3>
+        <div class="academic-grid">
+          <a class="academic-card" href="https://scholar.google.com/citations?user=yt9y2wIAAAAJ&hl=en" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+            <div class="ac-name">Google Scholar</div>
+            <div class="ac-sub">Publications & citations</div>
+          </a>
+          <a class="academic-card" href="https://www.researchgate.net/profile/Ducduy-Nguyen" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.123 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53h-.005a3.334 3.334 0 0 0 .113.438c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.385-.348.664-.638.876-.29.212-.738.35-1.227.35-.545 0-.901-.15-1.21-.353-.306-.203-.517-.454-.67-.915a3.136 3.136 0 0 1-.147-.762 17.366 17.367 0 0 1-.034-.656c-.01-.26-.014-.572-.014-.939a26.401 26.403 0 0 1 .014-.938 15.821 15.822 0 0 1 .035-.656 3.19 3.19 0 0 1 .148-.76 1.89 1.89 0 0 1 .742-1.01c.344-.244.593-.352 1.137-.352.508 0 .815.096 1.144.303.33.207.528.492.764.925.047.094.111.118.198.07l1.044-.43c.075-.048.09-.115.042-.199a3.549 3.549 0 0 0-.466-.742 3 3 0 0 0-.679-.607 3.313 3.313 0 0 0-.903-.41A4.068 4.068 0 0 0 19.586 0zM8.217 5.836c-1.69 0-3.036.086-4.297.086-1.146 0-2.291 0-3.007-.029v.831l1.088.2c.744.144 1.174.488 1.174 2.264v11.288c0 1.777-.43 2.12-1.174 2.263l-1.088.2v.832c.773-.029 2.12-.086 3.465-.086 1.29 0 2.951.057 3.667.086v-.831l-1.49-.2c-.773-.115-1.174-.487-1.174-2.264v-4.784c.688.057 1.29.057 2.206.057 1.748 3.123 3.41 5.472 4.355 6.56.86 1.032 2.177 1.691 3.839 1.691.487 0 1.003-.086 1.318-.23v-.744c-1.031 0-2.063-.716-2.808-1.518-1.26-1.376-2.95-3.582-4.355-6.074 2.32-.545 4.04-2.722 4.04-4.9 0-3.208-2.492-4.698-5.758-4.698zm-.515 1.29c2.406 0 3.839 1.26 3.839 3.552 0 2.263-1.547 3.782-4.097 3.782-.974 0-1.404-.03-2.063-.086v-7.19c.66-.059 1.547-.059 2.32-.059z"/></svg>
+            <div class="ac-name">ResearchGate</div>
+            <div class="ac-sub">Research profile</div>
+          </a>
+          <a class="academic-card" href="https://orcid.org/0000-0001-7789-3351" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947.95.95 0 0 1 .947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
+            <div class="ac-name">ORCID</div>
+            <div class="ac-sub">0000-0001-7789-3351</div>
+          </a>
+          <a class="academic-card" href="https://duyngd.github.io/" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <div class="ac-name">GitHub</div>
+            <div class="ac-sub">duyngd.github.io</div>
+          </a>
+        </div>
+
+        <div style="margin-top:2rem;">
+          <div class="sidebar-card">
+            <h3>Location</h3>
+            <div class="info-row">
+              <div class="info-row-icon">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              </div>
+              <div class="info-row-text">Skansegata 4B, 7014 Trondheim, Norway<br><span style="color:var(--text-light);font-size:0.8rem;">Department of Marine Technology, NTNU</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h3>Send a Message</h3>
+        <div id="contact-form-wrap">
+          <p>If you have any </p>
+          <div class="form-group">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="cf-subject">Subject</label>
+            <input type="text" id="cf-subject" placeholder="Research collaboration, etc." />
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" placeholder="Your message…"></textarea>
+          </div>
+          <button class="form-submit" onclick="submitContactForm()">Send Message →</button>
+        </div>
+        <div class="form-success" id="form-success">
+          <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/><polyline points="9,12 11,14 15,10"/>
+          </svg>
+          Thanks for contacting! I'll get back to you soon.
+        </div>
+      </div>
+    </div>
+
+    <footer>© 2025 <span>Duc Duy Nguyen</span>. All rights reserved.</footer>
+  </div>
+
+  <script>
+
+    const carouselState = {};
+
+    function carouselMove(id, dir) {
+      const grid = document.getElementById('grid-' + id);
+      const cards = grid.querySelectorAll('.exp-card');
+      const wrap = grid.parentElement;
+      const cardWidth = cards[0].offsetWidth + 24; // 24 = gap
+      const visible = Math.floor(wrap.offsetWidth / cardWidth);
+      const total = cards.length;
+      const maxIndex = total - visible;
+
+      if (!carouselState[id]) carouselState[id] = 0;
+
+      let next = carouselState[id] + dir;
+      if (next > maxIndex) next = 0;
+      if (next < 0) next = maxIndex;
+      carouselState[id] = next;
+
+      grid.style.transform = `translateX(-${next * cardWidth}px)`;
     }
-</style>
+
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+      document.getElementById('page-' + id).classList.add('active');
+      document.getElementById('nav-' + id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function submitContactForm() {
+      const name    = document.getElementById('cf-name').value.trim();
+      const email   = document.getElementById('cf-email').value.trim();
+      const subject = document.getElementById('cf-subject').value.trim();
+      const message = document.getElementById('cf-message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Please fill in your name, email, and message.');
+        return;
+      }
+
+      // Opens default mail client with pre-filled fields
+      const mailto = `mailto:duc.d.nguyen@ntnu.no?subject=${encodeURIComponent(subject || 'Message from website')}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message)}`;
+      window.location.href = mailto;
+
+      // Show success message
+      document.getElementById('contact-form-wrap').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
